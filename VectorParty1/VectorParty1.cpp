@@ -18,6 +18,8 @@ int main()
 		LineWithWidth rt;
 		rt.setWidth(5);
 		rt.setFillColor(sf::Color::Green);
+		rt.setPoints(line.tosf(), base.tosf());
+		rot.getPhi(rot.getPhi() - 0.05);
 		rt.setPoints(base.tosf(), line.tosf());
 		rot.setPhi(rot.getPhi() + 0.05);
 		window.clear();
