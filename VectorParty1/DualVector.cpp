@@ -75,6 +75,21 @@ DualVector DualVector::operator+(const sf::Vector2f& other) const
 
 }
 
+DualVector DualVector::operator-(const DualVector& other) const
+{
+    DualVector res;
+    res.setCartesian(x - other.x, y - other.y);
+
+    return res;
+}
+
+DualVector DualVector::operator-(const sf::Vector2f& other) const
+{
+    DualVector res;
+    res.setCartesian(x - other.x, y - other.y);
+    return res;
+}
+
 float DualVector::rad_to_deg(float rad)
 {
     return rad * 57.2958f;

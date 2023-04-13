@@ -3,9 +3,10 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(200, 200), "Lesson 2. kychka-pc.ru");
-	DualVector base,rot;
-	base.setCartesian(100,100);
-	rot.setPolar(50, 1);
+	DualVector base, rt,rt1;
+	base.setCartesian(100, 100);
+	rt.setPolar(60, 0);
+	rt1.setPolar(20, 0);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -14,19 +15,17 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-		DualVector line = base + rot;
-		LineWithWidth rt;
-		rt.setWidth(5);
-		rt.setFillColor(sf::Color::Green);
-		rt.setPoints(line.tosf(), base.tosf());
-		rot.getPhi(rot.getPhi() - 0.05);
-		rt.setPoints(base.tosf(), line.tosf());
-		rot.setPhi(rot.getPhi() + 0.05);
+		DualVector rotl = base + rt;
+		rt.setPhi(rt.getPhi() + 0.05);
+		LineWithWidth rot;
+		rot.setWidth(5);
+		rot.setFillColor(sf::Color::Green);
+		rot.setPoints(base.tosf(),rotl.tosf() );
+		sf::CircleShape ring();
+		ring.setFillColor(sf::Color(178, 179, 189));
+		set
 		window.clear();
-		window.draw(rt);
 		window.draw(rot);
-		window.draw(base);
-		window.draw(line);
 		window.display();
 	}
 
