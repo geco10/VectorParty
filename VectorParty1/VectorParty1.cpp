@@ -2,7 +2,14 @@
 #include"DualVector.h"
 #include<math.h>
 DualVector fixedStep(DualVector center,int radius){
+	
 	if (center.y - radius <= 0)return DualVector(1, -1);
+	else return DualVector(1, 1);
+	if (center.y + radius >= 500)return DualVector(1, -1);
+	else return DualVector(1, 1);
+	if (center.x - radius <= 0)return DualVector(-1, 1);
+	else return DualVector(1, 1);
+	if (center.x + radius >= 500)return DualVector(-1, 1);
 	else return DualVector(1, 1);
 }
 int main()
