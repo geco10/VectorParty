@@ -24,12 +24,18 @@
     <ClCompile Include="DualVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Multiangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LineWithWidth.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DualVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

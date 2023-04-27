@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Multiangle.cpp" />
     <ClCompile Include="DualVector.cpp" />
     <ClCompile Include="LineWithWidth.cpp" />
     <ClCompile Include="VectorParty1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Multiangle.h" />
     <ClInclude Include="DualVector.h" />
     <ClInclude Include="LineWithWidth.h" />
   </ItemGroup>
