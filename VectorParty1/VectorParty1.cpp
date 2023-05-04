@@ -172,10 +172,11 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(500, 500), "Lesson 2. kychka-pc.ru");
 	DualVector base,step;
-	base.setCartesian(100, 100);
-	step.setPolar(0.5, 34);
+	base.setCartesian(100, 400);
+	step.setPolar(0.5, -10);
 	LineWithWidth line;
 	line.setWidth(5);
+	bool c = false;
 	line.setFillColor(sf::Color::Red);
 	line.setPoints(sf::Vector2f(250, 0), sf::Vector2f(250, 500));
 	while (window.isOpen())
@@ -187,20 +188,68 @@ int main()
 				window.close();
 			if (event.type == sf::Event::KeyPressed)
 			{
-				
+				if (event.key.code==sf::Keyboard::Enter)
+				{
+					c = true;
+				}
+				if (event.key.code == sf::Keyboard::Up)
+				{
+					if (!c) {
+						base = base + DualVector(0,-2);
+					}
+				}
+				if (event.key.code == sf::Keyboard::Down)
+				{
+					if (!c) {
+						base = base + DualVector(0, 2);
+					}
+				}
+				if (event.key.code == sf::Keyboard::Right)
+				{
+					if (!c) {
+						base = base + DualVector(2, 0);
+					}
+				}
+				if (event.key.code == sf::Keyboard::Left)
+				{
+					if (!c) {
+						base = base + DualVector(-2,0);
+					}
+				}
+				if (event.key.code == sf::Keyboard::A)
+				{
+					if (!c) {
+						step.setPhi(step.getPhi() - 2);
+					}
+				}
+				if (event.key.code == sf::Keyboard::S)
+				{
+					if (!c) {
+						step.setPhi(step.getPhi()+2);
+					}
+				}
 			}
 
 		}
+		LineWithWidth rot;
+		rot.setWidth(5);
+		rot.setFillColor(sf::Color::Green);
+		rot.setPoints(base.tosf()+sf::Vector2f(20,20), base.tosf()+sf::Vector2f(20, 20) + (step*50).tosf());
 		sf::CircleShape circle(20);
 		circle.setFillColor(sf::Color::Blue);
 		circle.setPosition(base.tosf());
-		if (base.x >= 250) {
+		if (c == true) {
+			if (fabs(base.x-250+20)<25) {
+				step.x = 0;
+			}
+			base = base + step;
+		
 			
 		}
-		base = base + step;
 		window.clear();
-		window.draw(line);
 		window.draw(circle);
+		if (!c)window.draw(rot);
+		window.draw(line);
 		window.display();
 	}
 
